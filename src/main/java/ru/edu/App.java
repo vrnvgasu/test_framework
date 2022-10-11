@@ -1,13 +1,14 @@
 package ru.edu;
 
-import ru.edu.framework.AppFramework;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 
   public static void main(String[] args) {
-    AppFramework appFramework = new AppFramework(args);
+    ApplicationContext context = new ClassPathXmlApplicationContext("classpath:beans.xml");
 
-    MessageRender messageRender = appFramework.getMessageRender();
+    MessageRender messageRender = context.getBean(MessageRender.class);
     messageRender.render();
   }
 

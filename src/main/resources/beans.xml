@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--  <bean id="defaultMessageProvider" class="ru.edu.DefaultMessageProvider"></bean>-->
+  <bean id="argumentMessageProvider" class="ru.edu.ArgumentMessageProvider">
+    <constructor-arg name="args">
+      <list>
+        <value>Hello</value>
+        <value>Param2</value>
+        <value>Param3</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean id="jsonMessageRender" class="ru.edu.JsonMessageRender">
+    <property name="messageProvider" ref="argumentMessageProvider"> </property>
+  </bean>
+</beans>
