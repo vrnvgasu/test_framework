@@ -1,13 +1,16 @@
 package ru.edu;
 
-import ru.edu.framework.AppFramework;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
 
   public static void main(String[] args) {
-    AppFramework appFramework = new AppFramework(args);
+    // Создаем контекст из зависимости spring-context и будем считывать конфигурацию из ru.edu
+    ApplicationContext context = new AnnotationConfigApplicationContext("ru.edu");
 
-    MessageRender messageRender = appFramework.getMessageRender();
+    // определили бин в конфигурации MyConfig
+    MessageRender messageRender = context.getBean(MessageRender.class);
     messageRender.render();
   }
 
