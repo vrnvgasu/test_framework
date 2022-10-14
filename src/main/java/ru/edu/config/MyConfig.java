@@ -27,11 +27,14 @@ public class MyConfig {
     return provider;
   }
 
-  @Bean
-  public MessageRender  messageRender() {
-    MessageRender render = new JsonMessageRender();
-    render.setMessageProvider(messageProvider()); // DI в сеттер
-    return render;
-  }
+  /**
+   * Вместо создания бина в конфигурации, можем указать у нужного класса тип @Component
+   */
+//  @Bean
+//  public MessageRender  messageRender() {
+//    MessageRender render = new JsonMessageRender();
+//    render.setMessageProvider(messageProvider()); // DI в сеттер
+//    return render;
+//  }
 
 }
